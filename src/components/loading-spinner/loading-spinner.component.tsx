@@ -1,10 +1,10 @@
 import { CircularProgress, Stack, Typography } from "@mui/material";
 
-interface LoadingIndicatorProps {
+interface LoadingSpinnerProps {
   text: string;
 }
 
-export const LoadingIndicator: React.FC<LoadingIndicatorProps> = ({ text }) => {
+export const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ text }) => {
   return (
     <Stack alignItems="center" spacing={2}>
       <CircularProgress />

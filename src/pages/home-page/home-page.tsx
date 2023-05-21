@@ -8,14 +8,14 @@ import {
 import dayjs from "dayjs";
 import { useMemo, useState } from "react";
 
-import { DateTabs } from "src/components/DateTabs";
-import { LoadingIndicator } from "src/components/LoadingIndicator";
-import { PoolAvailability } from "src/components/PoolAvailability";
+import { DateTabs } from "src/components/date-tabs";
+import { LoadingSpinner } from "src/components/loading-spinner";
+import { PoolAvailability } from "src/components/pool-availability";
 import { usePreferences } from "src/hooks/use-preferences";
 import { useGetVenues } from "src/hooks/use-venues";
 import { Venue } from "src/types";
 
-export const LaneAvailabilityPage: React.FC = () => {
+export const HomePage: React.FC = () => {
   const { preferences, savePreferences } = usePreferences();
   const { venues, isVenuesLoading } = useGetVenues();
   const today = useMemo<dayjs.Dayjs>(() => dayjs(), []);
@@ -50,7 +50,7 @@ export const LaneAvailabilityPage: React.FC = () => {
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={isVenuesLoading}
       >
-        <LoadingIndicator text="Loading Pools..." />
+        <LoadingSpinner text="Loading Pools..." />
       </Backdrop>
       <Stack
         direction="column"

@@ -4,8 +4,8 @@ import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-import { Header } from "./components/Header";
-import { LaneAvailabilityPage } from "./pages/LaneAvailabilityPage/LaneAvailabilityPage";
+import { Header } from "./components/header";
+import { HomePage } from "./pages/home-page/home-page";
 
 const queryClient = new QueryClient();
 
@@ -24,7 +24,7 @@ function App() {
         <QueryClientProvider client={queryClient}>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <Header />
-            <LaneAvailabilityPage />
+            <HomePage />
           </LocalizationProvider>
         </QueryClientProvider>
       </ThemeProvider>

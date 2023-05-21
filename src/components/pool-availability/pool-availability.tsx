@@ -12,7 +12,7 @@ import { Dayjs } from "dayjs";
 
 import { useGetVenueAvailability } from "src/hooks/use-venue-availability";
 
-import { LoadingIndicator } from "../LoadingIndicator";
+import { LoadingSpinner } from "../loading-spinner";
 
 interface PoolAvailabilityProps {
   operator: string;
@@ -50,7 +50,7 @@ export const PoolAvailability: React.FC<PoolAvailabilityProps> = ({
       />
       <CardContent>
         {isSessionsLoading ? (
-          <LoadingIndicator text="Loading Availability" />
+          <LoadingSpinner text="Loading Availability" />
         ) : (
           <List>
             {sessions.length ? (
