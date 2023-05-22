@@ -1,3 +1,6 @@
+# Swim Lane UI
+
+Deployed instance: https://cpsnowden.github.io/swimlane-ui/
 
 ## Vite Build
 
@@ -17,6 +20,6 @@ npm run dev
 
 ## Stack
 
-Testing - https://vitest.dev/guide/
-Caching - https://tanstack.com/query/latest
-Mocking - https://github.com/nock/nock
+- Testing - https://vitest.dev/guide/
+- Caching - https://tanstack.com/query/latest
+- Mocking - https://github.com/nock/nock
