@@ -68,7 +68,7 @@ export const PoolAvailability: React.FC<PoolAvailabilityProps> = ({
                         "HH:mm"
                       )} - ${session.endAt.format("HH:mm")} (${
                         session.spaces
-                      })`}
+                      } spaces)`}
                       secondary={session.laneName}
                     />
                   </ListItem>
