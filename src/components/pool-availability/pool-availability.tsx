@@ -7,12 +7,12 @@ import {
   List,
   ListItem,
   ListItemText,
+  ListSubheader,
 } from "@mui/material";
 import { Dayjs } from "dayjs";
 
+import { LoadingSpinner } from "src/components/loading-spinner";
 import { useGetVenueAvailability } from "src/hooks/use-venue-availability";
-
-import { LoadingSpinner } from "../loading-spinner";
 
 interface PoolAvailabilityProps {
   operator: string;
@@ -35,7 +35,7 @@ export const PoolAvailability: React.FC<PoolAvailabilityProps> = ({
     date.format("YYYY-MM-DD")
   );
 
-  // https://mui-treasury.com/components/card/
+  //Consider https://mui-treasury.com/components/card/
 
   return (
     <Card sx={{ width: 400 }}>
@@ -52,7 +52,12 @@ export const PoolAvailability: React.FC<PoolAvailabilityProps> = ({
         {isSessionsLoading ? (
           <LoadingSpinner text="Loading Availability" />
         ) : (
-          <List>
+          <List
+            aria-labelledby="session-list-header"
+            subheader={
+              <ListSubheader id="session-list-header">Sessions</ListSubheader>
+            }
+          >
             {sessions.length ? (
               sessions.map((session, i) => (
                 <ListItem key={i}>
