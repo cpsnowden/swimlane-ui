@@ -3,7 +3,7 @@ import { defineConfig } from "vitest/config";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "https://cpsnowden.github.io/swimlane-ui/",
+  base: "https://swimminglane.co.uk",
   plugins: [react()],
   resolve: {
     alias: {
