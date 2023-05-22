@@ -3,6 +3,7 @@ import {
   Card,
   CardContent,
   CardHeader,
+  Divider,
   IconButton,
   List,
   ListItem,
@@ -38,7 +39,7 @@ export const PoolAvailability: React.FC<PoolAvailabilityProps> = ({
   //Consider https://mui-treasury.com/components/card/
 
   return (
-    <Card sx={{ width: 400 }}>
+    <Card sx={{ width: 500 }}>
       <CardHeader
         title={venueName}
         titleTypographyProps={{ variant: "h6" }}
@@ -60,14 +61,19 @@ export const PoolAvailability: React.FC<PoolAvailabilityProps> = ({
           >
             {sessions.length ? (
               sessions.map((session, i) => (
-                <ListItem key={i}>
-                  <ListItemText
-                    primary={`${session.startAt.format(
-                      "HH:mm"
-                    )} - ${session.endAt.format("HH:mm")} (${session.spaces})`}
-                    secondary={session.laneName}
-                  />
-                </ListItem>
+                <>
+                  <ListItem key={i} disabled={session.spaces === 0}>
+                    <ListItemText
+                      primary={`${session.startAt.format(
+                        "HH:mm"
+                      )} - ${session.endAt.format("HH:mm")} (${
+                        session.spaces
+                      })`}
+                      secondary={session.laneName}
+                    />
+                  </ListItem>
+                  <Divider variant="fullWidth" component="li" />
+                </>
               ))
             ) : (
               <ListItem>
