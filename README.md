@@ -1,6 +1,6 @@
 # Swim Lane UI
 
-Deployed instance: https://cpsnowden.github.io/swimlane-ui/
+Deployed instance: https://swimminglane.co.uk
 
 ## Vite Build
 
