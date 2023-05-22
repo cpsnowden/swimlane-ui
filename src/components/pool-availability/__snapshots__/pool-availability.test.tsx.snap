@@ -81,7 +81,7 @@ exports[`PoolAvailability > should render list of sessions 1`] = `
     <span
       class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary emotion-2"
     >
-      08:00 - 08:59 (1)
+      08:00 - 08:59 (1 spaces)
     </span>
     <p
       class="MuiTypography-root MuiTypography-body2 MuiListItemText-secondary emotion-3"
