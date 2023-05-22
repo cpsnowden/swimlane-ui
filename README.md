@@ -15,5 +15,8 @@ npm install
 npm run dev
 ```
 
+## Stack
 
-https://github.com/nock/nock
+Testing - https://vitest.dev/guide/
+Caching - https://tanstack.com/query/latest
+Mocking - https://github.com/nock/nock

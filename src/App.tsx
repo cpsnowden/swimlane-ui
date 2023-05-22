@@ -2,12 +2,12 @@ import "./App.css";
 import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { QueryClientProvider } from "@tanstack/react-query";
+
+import { queryClient } from "src/lib/react-query";
 
 import { Header } from "./components/header";
 import { HomePage } from "./pages/home-page/home-page";
-
-const queryClient = new QueryClient();
 
 const darkTheme = createTheme({
   palette: {

@@ -12,12 +12,12 @@ import { DateTabs } from "src/components/date-tabs";
 import { LoadingSpinner } from "src/components/loading-spinner";
 import { PoolAvailability } from "src/components/pool-availability";
 import { usePreferences } from "src/hooks/use-preferences";
-import { useGetVenues } from "src/hooks/use-venues";
+import { useVenues } from "src/hooks/use-venues";
 import { Venue } from "src/types";
 
 export const HomePage: React.FC = () => {
   const { preferences, savePreferences } = usePreferences();
-  const { venues, isVenuesLoading } = useGetVenues();
+  const { venues, isVenuesLoading } = useVenues();
   const today = useMemo<dayjs.Dayjs>(() => dayjs(), []);
   const [selectedDate, selectDate] = useState<dayjs.Dayjs>(today);
 
@@ -59,6 +59,7 @@ export const HomePage: React.FC = () => {
         spacing={4}
       >
         <Autocomplete
+          data-testid="add-venue-autocomplete"
           multiple
           options={venues}
           sx={{ width: 500 }}

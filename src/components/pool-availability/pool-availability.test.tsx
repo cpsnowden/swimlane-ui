@@ -3,18 +3,17 @@ import userEvent from "@testing-library/user-event";
 import dayjs from "dayjs";
 import { vi } from "vitest";
 
-import { useGetVenueAvailability } from "src/hooks/use-venue-availability";
+import { useVenueAvailability } from "src/hooks/use-venue-availability";
 
 import { PoolAvailability } from ".";
 
-const mockUseGetVenueAvailability =
-  useGetVenueAvailability as jest.MockedFunction<
-    typeof useGetVenueAvailability
-  >;
+const mockUseGetVenueAvailability = useVenueAvailability as jest.MockedFunction<
+  typeof useVenueAvailability
+>;
 
 vi.mock("src/hooks/use-venue-availability", () => {
   return {
-    useGetVenueAvailability: vi.fn(),
+    useVenueAvailability: vi.fn(),
   };
 });
 

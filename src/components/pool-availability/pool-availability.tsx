@@ -12,7 +12,7 @@ import {
 import { Dayjs } from "dayjs";
 
 import { LoadingSpinner } from "src/components/loading-spinner";
-import { useGetVenueAvailability } from "src/hooks/use-venue-availability";
+import { useVenueAvailability } from "src/hooks/use-venue-availability";
 
 interface PoolAvailabilityProps {
   operator: string;
@@ -29,7 +29,7 @@ export const PoolAvailability: React.FC<PoolAvailabilityProps> = ({
   date,
   onRemoveClick,
 }) => {
-  const { sessions, isSessionsLoading } = useGetVenueAvailability(
+  const { sessions, isSessionsLoading } = useVenueAvailability(
     operator,
     venueId,
     date.format("YYYY-MM-DD")

@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { api } from "src/api";
+import { api } from "src/lib/axios";
 import { Venue } from "src/types";
 
 interface VenueDTO {
@@ -14,12 +14,12 @@ const getVenues = async (): Promise<Array<Venue>> => {
   return response.data;
 };
 
-interface UseGetVenuesReturn {
+interface UseVenuesReturn {
   venues: Venue[];
   isVenuesLoading: boolean;
 }
 
-export const useGetVenues = (): UseGetVenuesReturn => {
+export const useVenues = (): UseVenuesReturn => {
   const { data: venues, isLoading: isVenuesLoading } = useQuery({
     queryKey: ["venues"],
     queryFn: getVenues,

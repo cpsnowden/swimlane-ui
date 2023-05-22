@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import dayjs from "dayjs";
 
-import { api } from "src/api";
+import { api } from "src/lib/axios";
 import { Session } from "src/types";
 
 interface LaneTimeDTO {
@@ -29,16 +29,16 @@ const getVenueTimes = async (
   });
 };
 
-interface UseGetVenueAvailabilityReturn {
+interface UseVenueAvailabilityReturn {
   sessions: Session[];
   isSessionsLoading: boolean;
 }
 
-export const useGetVenueAvailability = (
+export const useVenueAvailability = (
   operator: string,
   venueId: string,
   date: string
-): UseGetVenueAvailabilityReturn => {
+): UseVenueAvailabilityReturn => {
   const { data: sessions, isLoading: isSessionsLoading } = useQuery({
     queryKey: ["venue-availability", operator, venueId, date],
     queryFn: () => getVenueTimes(operator, venueId, date),
