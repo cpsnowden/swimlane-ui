@@ -4,10 +4,9 @@ import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { QueryClientProvider } from "@tanstack/react-query";
 
+import { Header } from "src/components/header";
 import { queryClient } from "src/lib/react-query";
-
-import { Header } from "./components/header";
-import { HomePage } from "./pages/home-page/home-page";
+import { HomePage } from "src/pages/home-page";
 
 const darkTheme = createTheme({
   palette: {
