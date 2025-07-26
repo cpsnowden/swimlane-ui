@@ -1,5 +1,5 @@
 import { AppBar, IconButton, Toolbar } from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
+import PoolOutlined from "@mui/icons-material/PoolOutlined";
 
 interface BottomToolbarProps {
   onDrawerToggle: () => void;
@@ -22,7 +22,7 @@ export const BottomToolbar: React.FC<BottomToolbarProps> = ({ onDrawerToggle }) 
           onClick={onDrawerToggle}
           size="large"
         >
-          <AddIcon />
+          <PoolOutlined />
         </IconButton>
       </Toolbar>
     </AppBar>

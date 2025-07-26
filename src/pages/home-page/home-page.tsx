@@ -69,8 +69,6 @@ export const HomePage: React.FC<HomePageProps> = ({ isDrawerOpen, onDrawerToggle
         onClose={onDrawerToggle}
         sx={{
           '& .MuiDrawer-paper': {
-            borderTopLeftRadius: 16,
-            borderTopRightRadius: 16,
             paddingBottom: '56px',
           },
         }}
@@ -78,8 +76,8 @@ export const HomePage: React.FC<HomePageProps> = ({ isDrawerOpen, onDrawerToggle
         <VenueSelector
           venues={venues}
           selectedVenues={selectedVenues}
-          isVenuesLoading={isVenuesLoading}
           onAddVenue={handleAddVenue}
+          onRemoveVenue={handleRemoveVenue}
         />
       </Drawer>
 
@@ -102,6 +100,7 @@ export const HomePage: React.FC<HomePageProps> = ({ isDrawerOpen, onDrawerToggle
           sx={{
             width: "100%",
             alignItems: { xs: "stretch", md: "flex-start" },
+            justifyContent: "center",
             px: { xs: 1, md: 0 },
           }}
         >
