@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- Background -->
+  <rect width="32" height="32" fill="#1976D2" rx="4"/>
+  
+  <!-- Pool deck/surrounding area -->
+  <rect x="1" y="6" width="30" height="20" fill="#E0E0E0" rx="2"/>
+  
+  <!-- Main pool water -->
+  <rect x="3" y="8" width="26" height="16" fill="#1565C0" rx="1"/>
+  
+  <!-- Water surface with slight gradient -->
+  <rect x="3" y="8" width="26" height="16" fill="url(#waterGradient)" rx="1"/>
+  
+  <!-- Pool tiles pattern -->
+  <defs>
+    <linearGradient id="waterGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#42A5F5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1565C0;stop-opacity:1" />
+    </linearGradient>
+    <pattern id="tiles" x="0" y="0" width="2" height="2" patternUnits="userSpaceOnUse">
+      <rect width="2" height="2" fill="#1976D2"/>
+      <rect width="1.8" height="1.8" x="0.1" y="0.1" fill="#42A5F5"/>
+    </pattern>
+  </defs>
+  
+  <!-- Pool bottom with tile pattern -->
+  <rect x="3" y="8" width="26" height="16" fill="url(#tiles)" opacity="0.3" rx="1"/>
+  
+  <!-- Lane ropes (more realistic) -->
+  <g stroke="#FFD54F" stroke-width="0.8" fill="#FFD54F">
+    <!-- Lane rope 1 -->
+    <line x1="8.5" y1="8" x2="8.5" y2="24"/>
+    <circle cx="8.5" cy="10" r="0.4"/>
+    <circle cx="8.5" cy="14" r="0.4"/>
+    <circle cx="8.5" cy="18" r="0.4"/>
+    <circle cx="8.5" cy="22" r="0.4"/>
+    
+    <!-- Lane rope 2 -->
+    <line x1="13.5" y1="8" x2="13.5" y2="24"/>
+    <circle cx="13.5" cy="10" r="0.4"/>
+    <circle cx="13.5" cy="14" r="0.4"/>
+    <circle cx="13.5" cy="18" r="0.4"/>
+    <circle cx="13.5" cy="22" r="0.4"/>
+    
+    <!-- Lane rope 3 -->
+    <line x1="18.5" y1="8" x2="18.5" y2="24"/>
+    <circle cx="18.5" cy="10" r="0.4"/>
+    <circle cx="18.5" cy="14" r="0.4"/>
+    <circle cx="18.5" cy="18" r="0.4"/>
+    <circle cx="18.5" cy="22" r="0.4"/>
+    
+    <!-- Lane rope 4 -->
+    <line x1="23.5" y1="8" x2="23.5" y2="24"/>
+    <circle cx="23.5" cy="10" r="0.4"/>
+    <circle cx="23.5" cy="14" r="0.4"/>
+    <circle cx="23.5" cy="18" r="0.4"/>
+    <circle cx="23.5" cy="22" r="0.4"/>
+  </g>
+  
+  <!-- Starting blocks -->
+  <rect x="4" y="7" width="24" height="1.5" fill="#37474F"/>
+  <rect x="6" y="6.5" width="2" height="2" fill="#455A64" rx="0.2"/>
+  <rect x="11" y="6.5" width="2" height="2" fill="#455A64" rx="0.2"/>
+  <rect x="16" y="6.5" width="2" height="2" fill="#455A64" rx="0.2"/>
+  <rect x="21" y="6.5" width="2" height="2" fill="#455A64" rx="0.2"/>
+  <rect x="26" y="6.5" width="2" height="2" fill="#455A64" rx="0.2"/>
+  
+  <!-- Pool edge/gutter -->
+  <rect x="3" y="8" width="26" height="16" fill="none" stroke="#37474F" stroke-width="1" rx="1"/>
+  
+  <!-- Water ripples/movement -->
+  <g stroke="rgba(255,255,255,0.2)" stroke-width="0.5" fill="none">
+    <ellipse cx="10" cy="12" rx="2" ry="0.8"/>
+    <ellipse cx="20" cy="18" rx="1.5" ry="0.6"/>
+    <ellipse cx="25" cy="14" rx="1" ry="0.4"/>
+  </g>
+  
+  <!-- Lane numbers -->
+  <g fill="white" font-family="Arial" font-size="2" text-anchor="middle">
+    <text x="6" y="10">1</text>
+    <text x="11" y="10">2</text>
+    <text x="16" y="10">3</text>
+    <text x="21" y="10">4</text>
+    <text x="26" y="10">5</text>
+  </g>
+</svg>
