@@ -4,6 +4,8 @@ import {
   Container,
   Stack,
   TextField,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 import dayjs from "dayjs";
 import { useMemo, useState } from "react";
@@ -20,6 +22,9 @@ export const HomePage: React.FC = () => {
   const { venues, isVenuesLoading } = useVenues();
   const today = useMemo<dayjs.Dayjs>(() => dayjs(), []);
   const [selectedDate, selectDate] = useState<dayjs.Dayjs>(today);
+  
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   const handleAddVenue = (venues: Venue[]): void => {
     const newVenueIds = [
@@ -88,14 +93,14 @@ export const HomePage: React.FC = () => {
         />
         <Stack
           direction={{ xs: "column", md: "row" }}
-          spacing={2}
+          spacing={isMobile ? 1 : 2}
           sx={{
             width: "100%",
-            alignItems: { xs: "center", md: "flex-start" },
+            alignItems: { xs: "stretch", md: "flex-start" },
+            px: { xs: 1, md: 0 },
           }}
         >
           {selectedVenues.map((venue, i) => (
-            // Set styling
             <PoolAvailability
               key={i}
               operator={venue.operator}
