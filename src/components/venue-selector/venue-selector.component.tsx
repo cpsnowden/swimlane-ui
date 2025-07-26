@@ -52,7 +52,7 @@ export const VenueSelector: React.FC<VenueSelectorProps> = ({
   };
 
   return (
-    <Box sx={{ p: 3, minHeight: 200, maxHeight: '70vh', overflow: 'auto' }}>
+    <Box sx={{ p: 3, minHeight: 200, maxHeight: '70vh', display: 'flex', flexDirection: 'column' }}>
       <Typography variant="h6" sx={{ mb: 2 }}>
         Select Venues
       </Typography>
@@ -89,28 +89,30 @@ export const VenueSelector: React.FC<VenueSelectorProps> = ({
         Available Venues
       </Typography>
       
-      {Object.entries(groupedVenues).map(([operator, operatorVenues]) => (
-        <Box key={operator} sx={{ mb: 2 }}>
-          <Typography variant="body2" color="text.secondary" sx={{ mb: 1, fontWeight: 'medium' }}>
-            {operator}
-          </Typography>
-          <List dense>
-            {operatorVenues.map((venue) => (
-              <ListItem key={venue.slug} disablePadding>
-                <ListItemButton onClick={() => handleVenueToggle(venue)}>
-                  <Checkbox
-                    edge="start"
-                    checked={false}
-                    tabIndex={-1}
-                    disableRipple
-                  />
-                  <ListItemText primary={venue.name} />
-                </ListItemButton>
-              </ListItem>
-            ))}
-          </List>
-        </Box>
-      ))}
+      <Box sx={{ flex: 1, overflow: 'auto' }}>
+        {Object.entries(groupedVenues).map(([operator, operatorVenues]) => (
+          <Box key={operator} sx={{ mb: 2 }}>
+            <Typography variant="body2" color="text.secondary" sx={{ mb: 1, fontWeight: 'medium' }}>
+              {operator}
+            </Typography>
+            <List dense>
+              {operatorVenues.map((venue) => (
+                <ListItem key={venue.slug} disablePadding>
+                  <ListItemButton onClick={() => handleVenueToggle(venue)}>
+                    <Checkbox
+                      edge="start"
+                      checked={false}
+                      tabIndex={-1}
+                      disableRipple
+                    />
+                    <ListItemText primary={venue.name} />
+                  </ListItemButton>
+                </ListItem>
+              ))}
+            </List>
+          </Box>
+        ))}
+      </Box>
     </Box>
   );
 };

@@ -107,10 +107,6 @@ export const PoolAvailability: React.FC<PoolAvailabilityProps> = ({
           aria-controls={`${venueId}-content`}
           id={`${venueId}-header`}
           sx={{
-            '& .MuiAccordionSummary-content': {
-              alignItems: 'center',
-              justifyContent: 'space-between',
-            },
             ...(hasNoAvailability && {
               cursor: 'default',
               '&:hover': {
@@ -136,16 +132,6 @@ export const PoolAvailability: React.FC<PoolAvailabilityProps> = ({
               </Typography>
             )}
           </Typography>
-          <IconButton 
-            onClick={(e) => {
-              e.stopPropagation();
-              onRemoveClick();
-            }}
-            size="small"
-            sx={{ ml: 1 }}
-          >
-            <CloseIcon />
-          </IconButton>
         </AccordionSummary>
         {!hasNoAvailability && (
           <AccordionDetails sx={{ pt: 0 }}>
