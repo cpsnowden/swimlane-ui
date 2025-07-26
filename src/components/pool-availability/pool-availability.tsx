@@ -1,5 +1,6 @@
 import CloseIcon from "@mui/icons-material/Close";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import WarningIcon from "@mui/icons-material/Warning";
 import {
   Accordion,
   AccordionDetails,
@@ -48,6 +49,7 @@ export const PoolAvailability: React.FC<PoolAvailabilityProps> = ({
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const useAccordionLayout = forceAccordionMode || isMobile;
+  const hasNoAvailability = !isSessionsLoading && sessions.length === 0;
 
   const sessionContent = (
     <>
@@ -91,13 +93,17 @@ export const PoolAvailability: React.FC<PoolAvailabilityProps> = ({
   if (useAccordionLayout) {
     return (
       <Accordion
+        disabled={hasNoAvailability}
         sx={{
           width: "100%",
           boxShadow: 1,
+          ...(hasNoAvailability && {
+            backgroundColor: 'action.disabledBackground',
+          }),
         }}
       >
         <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
+          expandIcon={hasNoAvailability ? <WarningIcon color="warning" /> : <ExpandMoreIcon />}
           aria-controls={`${venueId}-content`}
           id={`${venueId}-header`}
           sx={{
@@ -105,10 +111,30 @@ export const PoolAvailability: React.FC<PoolAvailabilityProps> = ({
               alignItems: 'center',
               justifyContent: 'space-between',
             },
+            ...(hasNoAvailability && {
+              cursor: 'default',
+              '&:hover': {
+                backgroundColor: 'transparent',
+              },
+            }),
           }}
         >
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Typography 
+            variant="h6" 
+            component="div" 
+            sx={{ 
+              flexGrow: 1,
+              display: 'flex',
+              alignItems: 'center',
+              gap: 1,
+            }}
+          >
             {venueName}
+            {hasNoAvailability && (
+              <Typography variant="body2" color="text.secondary">
+                (No availability)
+              </Typography>
+            )}
           </Typography>
           <IconButton 
             onClick={(e) => {
@@ -121,9 +147,11 @@ export const PoolAvailability: React.FC<PoolAvailabilityProps> = ({
             <CloseIcon />
           </IconButton>
         </AccordionSummary>
-        <AccordionDetails sx={{ pt: 0 }}>
-          {sessionContent}
-        </AccordionDetails>
+        {!hasNoAvailability && (
+          <AccordionDetails sx={{ pt: 0 }}>
+            {sessionContent}
+          </AccordionDetails>
+        )}
       </Accordion>
     );
   }
