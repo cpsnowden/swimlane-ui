@@ -1,9 +1,8 @@
 import {
-  Autocomplete,
   Backdrop,
   Container,
+  Drawer,
   Stack,
-  TextField,
   useMediaQuery,
   useTheme,
 } from "@mui/material";
@@ -13,11 +12,17 @@ import { useMemo, useState } from "react";
 import { DateTabs } from "src/components/date-tabs";
 import { LoadingSpinner } from "src/components/loading-spinner";
 import { PoolAvailability } from "src/components/pool-availability";
+import { VenueSelector } from "src/components/venue-selector";
 import { usePreferences } from "src/hooks/use-preferences";
 import { useVenues } from "src/hooks/use-venues";
 import { Venue } from "src/types";
 
-export const HomePage: React.FC = () => {
+interface HomePageProps {
+  isDrawerOpen: boolean;
+  onDrawerToggle: () => void;
+}
+
+export const HomePage: React.FC<HomePageProps> = ({ isDrawerOpen, onDrawerToggle }) => {
   const { preferences, savePreferences } = usePreferences();
   const { venues, isVenuesLoading } = useVenues();
   const today = useMemo<dayjs.Dayjs>(() => dayjs(), []);
@@ -34,6 +39,7 @@ export const HomePage: React.FC = () => {
         .filter((v) => !preferences.venueIds.includes(v)),
     ];
     savePreferences({ ...preferences, venueIds: newVenueIds });
+    onDrawerToggle();
   };
 
   const handleRemoveVenue = (venue: Venue): void => {
@@ -57,34 +63,33 @@ export const HomePage: React.FC = () => {
       >
         <LoadingSpinner text="Loading Pools..." />
       </Backdrop>
+      <Drawer
+        anchor="bottom"
+        open={isDrawerOpen}
+        onClose={onDrawerToggle}
+        sx={{
+          '& .MuiDrawer-paper': {
+            borderTopLeftRadius: 16,
+            borderTopRightRadius: 16,
+            paddingBottom: '56px',
+          },
+        }}
+      >
+        <VenueSelector
+          venues={venues}
+          selectedVenues={selectedVenues}
+          isVenuesLoading={isVenuesLoading}
+          onAddVenue={handleAddVenue}
+        />
+      </Drawer>
+
       <Stack
         direction="column"
         justifyContent="flex-start"
         alignItems="center"
         spacing={4}
+        sx={{ paddingBottom: '72px' }}
       >
-        <Autocomplete
-          data-testid="add-venue-autocomplete"
-          multiple
-          options={venues}
-          sx={{
-            width: { xs: "100%", sm: "100%", md: 500 },
-            maxWidth: "100%",
-          }}
-          groupBy={(option) => option.operator}
-          getOptionLabel={(option) => option.name}
-          getOptionDisabled={(option) =>
-            selectedVenues.some((excluded) => excluded.slug === option.slug)
-          }
-          loading={isVenuesLoading}
-          renderInput={(params) => <TextField {...params} label="Add Venue" />}
-          onChange={(_, value) => {
-            if (value) {
-              handleAddVenue(value);
-            }
-          }}
-          renderTags={() => null}
-        />
         <DateTabs
           initialDate={today}
           numberOfDays={7}

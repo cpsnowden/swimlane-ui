@@ -12,7 +12,6 @@ export const Header: React.FC = () => {
           </Toolbar>
         </Container>
       </AppBar>
-      {/* Render secondary toolbar to prevent any overlap as per https://mui.com/material-ui/react-app-bar/#fixed-placement */}
       <Toolbar />
     </>
   );
