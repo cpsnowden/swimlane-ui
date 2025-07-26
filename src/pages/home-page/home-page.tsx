@@ -39,7 +39,6 @@ export const HomePage: React.FC<HomePageProps> = ({ isDrawerOpen, onDrawerToggle
         .filter((v) => !preferences.venueIds.includes(v)),
     ];
     savePreferences({ ...preferences, venueIds: newVenueIds });
-    onDrawerToggle();
   };
 
   const handleRemoveVenue = (venue: Venue): void => {
