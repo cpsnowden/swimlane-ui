@@ -39,7 +39,13 @@ export const PoolAvailability: React.FC<PoolAvailabilityProps> = ({
   //Consider https://mui-treasury.com/components/card/
 
   return (
-    <Card sx={{ width: 500 }}>
+    <Card
+      sx={{
+        width: { xs: "100%", sm: "100%", md: 500 },
+        maxWidth: { xs: "100%", md: 500 },
+        minWidth: { md: 400 },
+      }}
+    >
       <CardHeader
         title={venueName}
         titleTypographyProps={{ variant: "h6" }}
