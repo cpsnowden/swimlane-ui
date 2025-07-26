@@ -62,7 +62,10 @@ export const HomePage: React.FC = () => {
           data-testid="add-venue-autocomplete"
           multiple
           options={venues}
-          sx={{ width: 500 }}
+          sx={{
+            width: { xs: "100%", sm: "100%", md: 500 },
+            maxWidth: "100%",
+          }}
           groupBy={(option) => option.operator}
           getOptionLabel={(option) => option.name}
           getOptionDisabled={(option) =>
@@ -83,7 +86,14 @@ export const HomePage: React.FC = () => {
           selected={selectedDate}
           onSelect={selectDate}
         />
-        <Stack direction="row" spacing={2}>
+        <Stack
+          direction={{ xs: "column", md: "row" }}
+          spacing={2}
+          sx={{
+            width: "100%",
+            alignItems: { xs: "center", md: "flex-start" },
+          }}
+        >
           {selectedVenues.map((venue, i) => (
             // Set styling
             <PoolAvailability
