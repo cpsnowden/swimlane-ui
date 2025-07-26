@@ -1,5 +1,6 @@
 import CloseIcon from "@mui/icons-material/Close";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import WarningIcon from "@mui/icons-material/Warning";
 import {
   Accordion,
   AccordionDetails,
@@ -48,6 +49,7 @@ export const PoolAvailability: React.FC<PoolAvailabilityProps> = ({
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const useAccordionLayout = forceAccordionMode || isMobile;
+  const hasNoAvailability = !isSessionsLoading && sessions.length === 0;
 
   const sessionContent = (
     <>
@@ -91,39 +93,51 @@ export const PoolAvailability: React.FC<PoolAvailabilityProps> = ({
   if (useAccordionLayout) {
     return (
       <Accordion
+        disabled={hasNoAvailability}
         sx={{
           width: "100%",
           boxShadow: 1,
+          ...(hasNoAvailability && {
+            backgroundColor: 'action.disabledBackground',
+          }),
         }}
       >
         <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
+          expandIcon={hasNoAvailability ? <WarningIcon color="warning" /> : <ExpandMoreIcon />}
           aria-controls={`${venueId}-content`}
           id={`${venueId}-header`}
           sx={{
-            '& .MuiAccordionSummary-content': {
-              alignItems: 'center',
-              justifyContent: 'space-between',
-            },
+            ...(hasNoAvailability && {
+              cursor: 'default',
+              '&:hover': {
+                backgroundColor: 'transparent',
+              },
+            }),
           }}
         >
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            {venueName}
-          </Typography>
-          <IconButton 
-            onClick={(e) => {
-              e.stopPropagation();
-              onRemoveClick();
+          <Typography 
+            variant="h6" 
+            component="div" 
+            sx={{ 
+              flexGrow: 1,
+              display: 'flex',
+              alignItems: 'center',
+              gap: 1,
             }}
-            size="small"
-            sx={{ ml: 1 }}
           >
-            <CloseIcon />
-          </IconButton>
+            {venueName}
+            {hasNoAvailability && (
+              <Typography variant="body2" color="text.secondary">
+                (No availability)
+              </Typography>
+            )}
+          </Typography>
         </AccordionSummary>
-        <AccordionDetails sx={{ pt: 0 }}>
-          {sessionContent}
-        </AccordionDetails>
+        {!hasNoAvailability && (
+          <AccordionDetails sx={{ pt: 0 }}>
+            {sessionContent}
+          </AccordionDetails>
+        )}
       </Accordion>
     );
   }
